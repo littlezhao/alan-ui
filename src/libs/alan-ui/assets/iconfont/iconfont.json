@@ -1,0 +1,23 @@
+{
+  "id": "2437493",
+  "name": "alan-ui",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "alan-ui",
+  "glyphs": [
+    {
+      "icon_id": "8620128",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e7aa",
+      "unicode_decimal": 59306
+    },
+    {
+      "icon_id": "902005",
+      "name": "arrow down",
+      "font_class": "arrowdown",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}
