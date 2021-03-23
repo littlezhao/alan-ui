@@ -1,11 +1,20 @@
  <template>
   <div class="selector-input">
-    <input type="text" :placeholder="placeholder" class="input" />
+    <input
+      type="text"
+      ref="inputElement"
+      :placeholder="placeholder"
+      :value="inputValue"
+      class="input"
+      @input="search"
+      @blur="setLatestValue(inputValue)"
+    />
     <i class="iconfont iconarrowdown"></i>
   </div>
 </template>
  
  <script>
+import { getCurrentInstance } from "vue";
 export default {
   name: "SelectorInput",
   props: {
@@ -13,6 +22,22 @@ export default {
       type: String,
       default: "请选择",
     },
+    inputValue: {
+      type: String,
+    },
+  },
+  setup(props, { emit }) {
+    const instance = getCurrentInstance();
+    const search = (e) => {
+      emit("search", e.target.value);
+    };
+    const setLatestValue = (value) => {
+      const _input = instance.refs.inputElement;
+      if (_input.value.length > 0) {
+        _input.value = value;
+      }
+    };
+    return { search, setLatestValue };
   },
 };
 </script>
@@ -32,20 +57,13 @@ export default {
     border-radius: 5px;
     outline: none;
     transition: all 0.2s linear;
-    z-index: 1;
     &:focus {
       border-color: #1890ff;
       box-shadow: 0 0 3px #1890ff;
     }
   }
-  .placeholder,
   .iconfont {
     position: absolute;
-  }
-  .placeholder {
-    left: 15px;
-    top: 8px;
-    color: #999;
   }
   .iconfont {
     transform: translateY(-3px);

@@ -1,5 +1,18 @@
 # alan-ui
-## 组件分析
-- input组件 placeholder 动态配置 icon
-- menu 下是一个list
-- 没有内容时需要提示no data！
+
+## 组件
+
+### 带搜索的输入框
+
+- options 参数
+
+| 参数 | 说明 | 类型 |
+| :----:|:----:|:----:|
+| data | 列表项 | Array |
+| placeholder | 默认提示值 | String |
+
+- Event 事件
+
+| 名称 | 说明 | 回调参数 |
+| :----: |:----:|:----: |
+| getItem| 获取选中item项 |function(item)|
