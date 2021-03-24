@@ -7,6 +7,7 @@
       :value="inputValue"
       class="input"
       @input="search"
+      @focus="search"
       @blur="setLatestValue(inputValue)"
     />
     <i class="iconfont iconarrowdown"></i>

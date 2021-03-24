@@ -1,21 +1,28 @@
 <template>
   <div class="selector-menu">
-    <div
-      class="menu-item"
-      v-for="(item, index) in filterData"
-      :key="index"
-      @click="setItemValue(item)"
-    >
-      {{ item.text }}
-    </div>
+    <template v-if="filterData.length > 0">
+      <div
+        class="menu-item"
+        v-for="(item, index) in filterData"
+        :key="index"
+        @click="setItemValue(item)"
+      >
+        {{ item.text }}
+      </div>
+    </template>
+    <no-data-tip v-else />
   </div>
 </template>
 
 <script>
+import NoDataTip from "./NoDataTip.vue";
 import { ref } from "@vue/reactivity";
 import { computed, onMounted, watch } from "@vue/runtime-core";
 export default {
   name: "SelectorMenu",
+  components: {
+    NoDataTip,
+  },
   props: {
     data: {
       type: Array,
