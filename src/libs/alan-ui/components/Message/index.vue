@@ -61,7 +61,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .message {
   position: fixed;
   left: 50%;

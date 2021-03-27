@@ -41,9 +41,25 @@
     </button>
     <button class="success" @click="showMessage">showMessage</button>
   </div>
+  <button class="modal-launch" @click="lanunchModal">lanunchModal</button>
+  <al-modal
+    :show="modalshow"
+    headerText="this is modal title"
+    headerColor="#4caf50"
+    :width="600"
+    headerTextColor="#fff"
+    :borderRadius="4"
+    position="center"
+    contentText="this is a modal by alan"
+    contentTextColor="#000"
+    :btnGroupShow="true"
+    @cancle="cancle"
+    @confirm="confirm"
+  ></al-modal>
 </template>
 
 <script>
+import { reactive, ref } from "vue";
 import Message from "./libs/alan-ui/components/Message/Message.js";
 export default {
   name: "App",
@@ -69,17 +85,35 @@ export default {
       },
       { id: 3, title: "菜单3" },
     ];
+    const modalshow = ref(false);
     const getItem = (item) => {
       console.log(item.id, item.text);
     };
     const showMessage = () => {
       Message.warn("come from showMessage");
     };
+    const cancle = () => {
+      alert("you have click cancle modal!");
+      modalshow.value = false;
+    };
+    const confirm = () => {
+      alert("you have click confirm modal!");
+      modalshow.value = false;
+    };
+    const lanunchModal = () => {
+      console.log("clicked!");
+      modalshow.value = !modalshow.value;
+      console.log(modalshow.value);
+    };
     return {
       getItem,
       data,
       menuData,
       showMessage,
+      cancle,
+      confirm,
+      lanunchModal,
+      modalshow,
     };
   },
 };
@@ -90,6 +124,16 @@ export default {
   width: 500px;
   margin: 100px auto;
 }
+.modal-launch {
+  padding: 10px;
+  background: #4caf50;
+  color: #fff;
+  border: unset;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+  z-index: 99;
+}
 .menu-container {
   width: 220px;
   margin: 100px auto;
@@ -97,27 +141,27 @@ export default {
 .message-container {
   width: 1000px;
   margin: 50px auto;
-}
-button {
-  width: 150px;
-  height: 38px;
-  line-height: 38px;
-  margin-right: 20px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  padding: 0;
-}
-.success {
-  background: #4caf50;
-}
-.info {
-  background: #00bcd4;
-}
-.warn {
-  background: #ff9800;
-}
-.error {
-  background: #f44336;
+  button {
+    width: 150px;
+    height: 38px;
+    line-height: 38px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0;
+  }
+  .success {
+    background: #4caf50;
+  }
+  .info {
+    background: #00bcd4;
+  }
+  .warn {
+    background: #ff9800;
+  }
+  .error {
+    background: #f44336;
+  }
 }
 </style>

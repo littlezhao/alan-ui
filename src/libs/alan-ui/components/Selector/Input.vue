@@ -43,7 +43,7 @@ export default {
 };
 </script>
  
-<style lang="scss">
+<style lang="scss" scoped>
 .selector-input {
   position: relative;
   width: 100%;
